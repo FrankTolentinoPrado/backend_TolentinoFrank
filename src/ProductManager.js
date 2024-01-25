@@ -57,7 +57,7 @@ class ProductManager {
     }
 
     getProductById(productId) {
-        const foundProduct = this.products.find(product => product.id === productId);
+        const foundProduct = this.products.find(product => product.id === parseInt(productId));
 
         if (foundProduct) {
             return foundProduct;
@@ -119,3 +119,32 @@ manager.deleteProduct(productIdToDelete);
 
 console.log("Todos los productos después de las operaciones:");
 console.log(manager.getProducts());
+
+module.exports = ProductManager;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
