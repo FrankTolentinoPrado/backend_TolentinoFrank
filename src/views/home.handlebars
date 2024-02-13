@@ -1,0 +1,28 @@
+{{!-- Este archivo representa la vista de la página de inicio --}}
+
+{{#extend "layouts/main"}}
+
+    {{#content "title"}}Lista de Productos{{/content}}
+
+    {{#content "body"}}
+        <h1>Lista de Productos</h1>
+        <div class="row">
+            {{#each products}}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100">
+                    <img class="card-img-top" src="{{thumbnail}}" alt="{{title}}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{title}}</h4>
+                        <p class="card-text">{{description}}</p>
+                        <h5>${{price}}</h5>
+                    </div>
+                    <div class="card-footer">
+                        <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    {{/content}}
+
+{{/extend}}

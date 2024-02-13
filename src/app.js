@@ -1,10 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const handlebars = require('express-handlebars');
 const ProductManager = require('./controllers/ProductManager');
 const CartManager = require('./controllers/CartManager');
 
 const app = express();
 const port = process.env.PORT || 8080;
+
+// Configuración de Handlebars
+app.engine('handlebars', handlebars());
+app.set('view engine', 'handlebars');
 
 // Middlewares
 app.use(bodyParser.json());
@@ -114,12 +121,39 @@ app.post('/api/carts/:cid/product/:pid', async (req, res, next) => {
     }
 });
 
-// Middleware centralizado para manejar errores
+// Ruta para la vista home
+app.get('/', async (req, res, next) => {
+    try {
+        const products = await productManager.getProducts();
+        res.render('home', { products });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Ruta para la vista de productos en tiempo real
+app.get('/realtimeproducts', async (req, res, next) => {
+    try {
+        const products = await productManager.getProducts();
+        res.render('realTimeProducts', { products });
+    } catch (error) {
+        next(error);
+    }
+});
+
+// Configuración de Websockets
+io.on('connection', (socket) => {
+    console.log('Usuario conectado');
+
+});
+
+// Middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Internal Server Error');
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+// Escuchar en el puerto
+http.listen(port, () => {
+    console.log(`Servidor corriendo en el puerto ${port}`);
 });

@@ -4,7 +4,7 @@
     "title": "Funko Pop Pikachu",
     "description": "Figura coleccionable de Pikachu",
     "price": 15.99,
-    "thumbnail": "/images/pikachu.jpg",
+    "thumbnail": "/images/productos/funko-pikachu.webp",
     "code": "PK001",
     "stock": 50
   },
@@ -13,7 +13,7 @@
     "title": "Peluche Naruto",
     "description": "Nuevo Peluche Naruto",
     "price": 22.99,
-    "thumbnail": "/images/naruto.jpg",
+    "thumbnail": "/images/productos/peluche-naruto.jpg",
     "code": "NRT001",
     "stock": 35
   },
@@ -22,7 +22,7 @@
     "title": "Funko Pop Charmander",
     "description": "Figura coleccionable de Charmander",
     "price": 14.99,
-    "thumbnail": "/images/charmander.jpg",
+    "thumbnail": "/images/productos/funko-charmander.jpg",
     "code": "PK002",
     "stock": 40
   }
